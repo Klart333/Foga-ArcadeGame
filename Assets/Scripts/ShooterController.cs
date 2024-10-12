@@ -1,33 +1,26 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
+[System.Serializable]
 public class ShooterController : Controller
 {
-    public override void Setup(object inputs, bool mirrored)
+    public ShooterController(Controller copyFrom) : base(copyFrom)
     {
-
     }
-}
 
-public abstract class Controller
-{
-    [Header("Controller")]
-    [SerializeField]
-    protected PooledMonoBehaviour playerPrefab;
-
-    [SerializeField]
-    protected Vector2 spawnOffset;
-
-    protected PooledMonoBehaviour spawnedPlayer;
-
-    public virtual void Setup(object inputs, bool mirrored)
+    public override void BindInput(InputAction move, InputAction fire)
     {
-        Vector2 pos = spawnOffset;
-        if (mirrored)
-        {
-            pos.x *= -1;
-        }
-        Quaternion rot = Quaternion.identity;
+        throw new NotImplementedException();
+    }
 
-        spawnedPlayer = playerPrefab.GetAtPosAndRot<PooledMonoBehaviour>(pos, rot);
+    public override Vector2 Bounce(IBounceable bounceable)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Update()
+    {
+        throw new NotImplementedException();
     }
 }
